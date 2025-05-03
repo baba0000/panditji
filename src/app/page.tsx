@@ -1,103 +1,197 @@
-import Image from "next/image";
+'use client';
+
+import {
+  Box,
+  Container,
+  Heading,
+  Text,
+  Button,
+  VStack,
+  HStack,
+  SimpleGrid,
+  Icon,
+  Flex,
+} from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { FaStar, FaChartLine, FaHandshake } from 'react-icons/fa';
+import { GiCrystalBall } from 'react-icons/gi';
+
+const MotionBox = motion(Box);
+
+const services = [
+  {
+    title: 'Birth Chart Analysis',
+    description: 'Detailed analysis of your birth chart to understand your life path and potential.',
+    icon: GiCrystalBall,
+  },
+  {
+    title: 'Horoscope Reading',
+    description: 'Daily, weekly, and monthly horoscope predictions for your zodiac sign.',
+    icon: FaStar,
+  },
+  {
+    title: 'Matchmaking',
+    description: 'Compatibility analysis for marriage and relationships.',
+    icon: FaHandshake,
+  },
+  {
+    title: 'Career Guidance',
+    description: 'Astrological guidance for career choices and professional growth.',
+    icon: FaChartLine,
+  },
+];
+
+const testimonials = [
+  {
+    name: 'Priya Sharma',
+    text: 'The most accurate predictions I have ever received. Changed my perspective on life.',
+    rating: 5,
+  },
+  {
+    name: 'Rahul Verma',
+    text: 'The career guidance helped me make the right decision at a crucial point in my life.',
+    rating: 5,
+  },
+  {
+    name: 'Anjali Patel',
+    text: 'The matchmaking service was spot on! Found my perfect life partner.',
+    rating: 5,
+  },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <Box>
+      {/* Hero Section */}
+      <Box
+        bgGradient="linear(to-b, brand.500, brand.700)"
+        color="white"
+        py={20}
+        position="relative"
+        overflow="hidden"
+      >
+        <Container maxW="container.xl">
+          <Flex
+            direction={{ base: 'column', md: 'row' }}
+            align="center"
+            justify="space-between"
+            gap={8}
+          >
+            <VStack align="start" gap={6} maxW="600px">
+              <MotionBox
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <Heading
+                  as="h1"
+                  size="2xl"
+                  fontWeight="bold"
+                  lineHeight="1.2"
+                >
+                  Unlock the Mysteries of Your Future
+                </Heading>
+                <Text fontSize="xl" mt={4}>
+                  Personalized astrology readings, horoscope analysis, and guidance from a trusted astrologer.
+                </Text>
+                <Button
+                  colorScheme="yellow"
+                  size="lg"
+                  mt={6}
+                >
+                  Book Your Consultation
+                </Button>
+              </MotionBox>
+            </VStack>
+            <Box
+              position="relative"
+              w={{ base: '100%', md: '40%' }}
+              h="400px"
+              bg="rgba(255,255,255,0.1)"
+              borderRadius="xl"
+              overflow="hidden"
+            >
+              <Icon
+                as={GiCrystalBall}
+                w="full"
+                h="full"
+                color="white"
+                opacity={0.2}
+              />
+            </Box>
+          </Flex>
+        </Container>
+      </Box>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      {/* Services Section */}
+      <Container maxW="container.xl" py={20}>
+        <VStack gap={8} align="center">
+          <Heading>Our Services</Heading>
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} gap={8} w="full">
+            {services.map((service, index) => (
+              <MotionBox
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true }}
+              >
+                <VStack
+                  p={6}
+                  bg="white"
+                  borderRadius="xl"
+                  boxShadow="lg"
+                  gap={4}
+                  align="start"
+                  h="full"
+                >
+                  <Icon as={service.icon} w={10} h={10} color="brand.500" />
+                  <Heading size="md">{service.title}</Heading>
+                  <Text color="gray.600">{service.description}</Text>
+                </VStack>
+              </MotionBox>
+            ))}
+          </SimpleGrid>
+        </VStack>
+      </Container>
+
+      {/* Testimonials Section */}
+      <Box bg="gray.50" py={20}>
+        <Container maxW="container.xl">
+          <VStack gap={8} align="center">
+            <Heading>What Our Clients Say</Heading>
+            <SimpleGrid columns={{ base: 1, md: 3 }} gap={8} w="full">
+              {testimonials.map((testimonial, index) => (
+                <MotionBox
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <VStack
+                    p={6}
+                    bg="white"
+                    borderRadius="xl"
+                    boxShadow="lg"
+                    gap={4}
+                    align="start"
+                    h="full"
+                  >
+                    <HStack>
+                      {[...Array(testimonial.rating)].map((_, i) => (
+                        <Icon key={i} as={FaStar} color="yellow.400" />
+                      ))}
+                    </HStack>
+                    <Text color="gray.600">{testimonial.text}</Text>
+                    <Text fontWeight="bold">{testimonial.name}</Text>
+                  </VStack>
+                </MotionBox>
+              ))}
+            </SimpleGrid>
+          </VStack>
+        </Container>
+      </Box>
+    </Box>
   );
 }
